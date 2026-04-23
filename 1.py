@@ -577,7 +577,6 @@ with tab4:
             best = df_sorted.iloc[0]
             worst = df_sorted.iloc[-1]
 
-            # Форматируем цену с разделителем тысяч
             best_price = f"{best['Удельная цена (руб/т)']}"
             worst_price = f"{worst['Удельная цена (руб/т)']}"
 
@@ -601,7 +600,8 @@ with tab4:
             if 'show_top_n' in st.session_state:
                 st.write(f"### 🟢 Топ-{st.session_state.show_top_n} лучших вариантов")
                 top_df = df_sorted.head(st.session_state.show_top_n)[["Код варианта", "Дисконтированные затраты (млрд руб)", "Удельная цена (руб/т)", "Узлы (перечисление)"]]
-                st.dataframe(top_df.style.format({"Удельная цена (руб/т)": "{:..0f}"}), use_container_width=True)
+                # ИСПРАВЛЕНО: было "{:..0f}", стало "{:.0f}"
+                st.dataframe(top_df.style.format({"Удельная цена (руб/т)": "{:.0f}"}), use_container_width=True)
             if 'show_bottom_n' in st.session_state:
                 st.write(f"### 🔴 Топ-{st.session_state.show_bottom_n} худших вариантов")
                 bottom_df = df_sorted.tail(st.session_state.show_bottom_n)[["Код варианта", "Дисконтированные затраты (млрд руб)", "Удельная цена (руб/т)", "Узлы (перечисление)"]]
