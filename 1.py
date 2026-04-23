@@ -8,15 +8,7 @@ import io
 from itertools import combinations, product
 
 st.set_page_config(page_title="Логистический инструмент", layout="wide")
-st.markdown(
-    """
-    <div style="display: flex; align-items: center; gap: 12px;">
-        <img src="logo.png" width="45" height="45" style="border-radius: 10px;">
-        <h1 style="margin: 0;">Формирование логистической стратегии снабжения</h1>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+st.title("📦 Формирование логистической стратегии снабжения")
 
 # ---------------------- ИНИЦИАЛИЗАЦИЯ ДАННЫХ ----------------------
 if 'nodes_df' not in st.session_state:
